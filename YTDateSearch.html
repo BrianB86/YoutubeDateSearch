@@ -17,7 +17,7 @@
         <p class="lead text-center">Just enter a channel's name and choose a date range.</p>
       </div>
       <div class="container-fluid" id="inputArea">
-        <form>
+        <form action="#">
           <div class="form-horizontal">
             <div class="form-group">
               <label for="channelName" class="control-label col-sm-2">Channel Name:</label>
@@ -39,73 +39,22 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary" onsubmit="makeRequest()">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
         </form>
       </div>
 
-      <div class="container-fluid" id="results">
-      </div>
+      <table class="table table-striped" id="results">
+        <tbody id="resbody">
+
+          </tbody
+      </table>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="js/YT.js"></script>
         <script src="https://apis.google.com/js/client.js?onload=init"></script>
-        <script>
-
-          $(function(){
-            $("#startDate").datepicker();
-          });
-
-          $(function(){
-            $("#endDate").datepicker();
-          });
-
-          function init(){
-            gapi.client.setApiKey("AIzaSyBww9FhbqBAiP6OweZpWeWk3ZYCxLIyfZI");
-            gapi.client.load("youtube", "v3", function() {
-            });
-          }
-
-          function makeRequest() {
-            console.log("GotHere");
-            var channelName = $("#channelName").val();
-            var request = gapi.client.youtube.search.list({
-              part: "snippet",
-              channelId: encodeURIComponent($("#channelName").val()).replace(/%20/g, "+"),
-              order: "date",
-              type: "channel"
-            });
-            request.execute(function(response) {
-              console.log(response);
-            }, function(reason) {
-              console.log('Error: ' + reason.result.error.message);
-            });
-          }
-
-
-          function channelAPIRequest(snippet){
-            console.log(snippet);
-          /*  var request = gapi.client.youtube.channels.list({
-              part: 'snippet',
-              forUsername: channelName
-            });
-            request.execute(function(response){
-              var channel = response.result.item[0].snippet.title;
-              $('#test').html(channel);
-              $("#channelName").value = channel;
-              $("")
-              videoAPIRequest(channel);
-            });
-        */
-          }
-
-          function videoAPIRequest(){
-
-          }
-
-        </script>
-
     </body>
     <footer class="center-block">
       <p class= "col-md-offset-5"> Brian Battell  <img style= "width: 12px; height: 12px;" src="copyrighted.svg" </img>  <a href="https://www.linkedin.com/pub/brian-battell/62/983/815"><img style= "width: 24px; height: 24px;"src="linkedin1.svg"</a></img>  <a href="https://github.com/BrianB86"><img style= "width: 24px; height: 24px;"src="socialnetwork180.svg" <a href="https://github.com/BrianB86"</a></img></p>
