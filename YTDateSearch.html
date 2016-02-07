@@ -72,7 +72,7 @@
             var channelName = $("#channelName").val();
             var request = gapi.client.youtube.search.list({
               part: "snippet",
-              q: encodeURIComponent($("#channelName").val()).replace(/%20/g, "+"),
+              channelId: encodeURIComponent($("#channelName").val()).replace(/%20/g, "+"),
               order: "date",
               type: "channel"
             });
