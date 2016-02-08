@@ -7,7 +7,7 @@ $(function(){
 });
 
 function init(){
-  gapi.client.setApiKey("Your CLIENT API KEY HERE!");
+  gapi.client.setApiKey('YOUR API KEY HERE!!');
   gapi.client.load("youtube", "v3", function() {
   });
 }
@@ -23,15 +23,11 @@ $(function(){
     var startDate = startDateTemp.concat(defaultTime);
     var endDate = endDateTemp.concat(defaultTime);
     var channelId = $("#channelName").val();
-    console.log(channelId);
-    console.log(startDate);
-    console.log(endDate);
     var request = gapi.client.youtube.channels.list({
       part: "snippet",
       forUsername: channelId
     });
     request.execute(function(response) {
-      console.log(response);
       if(response.items.length < 1){
         console.log("That Channel does not exisit.");
       }else{
@@ -45,11 +41,8 @@ $(function(){
           publishedBefore: encodeURI(endDate)
         });
         videoRequeset.execute(function(response){
-          console.log(response);
           for(var i =0; i < response.items.length; response.items[i++]){
-            $('#results').append('<tr><td>' + response.items[i].snippet.title + '</td></tr>');
-            console.log(response.items[i].id.videoId);
-            $('#video').html('<iframe width="420" height="315 src=http://www.youtube.com/embed/'+ response.items[i].id.videoId +'></iframe>');
+            $('#results').append('<iframe width="420" height="315" src="http://www.youtube.com/embed/'+ response.items[i].id.videoId +'"></iframe>');
           }
         });
       }
