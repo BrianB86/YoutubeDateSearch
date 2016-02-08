@@ -7,7 +7,7 @@ $(function(){
 });
 
 function init(){
-  gapi.client.setApiKey("YOUR_API_KEY");
+  gapi.client.setApiKey("Your CLIENT API KEY HERE!");
   gapi.client.load("youtube", "v3", function() {
   });
 }
@@ -48,6 +48,8 @@ $(function(){
           console.log(response);
           for(var i =0; i < response.items.length; response.items[i++]){
             $('#results').append('<tr><td>' + response.items[i].snippet.title + '</td></tr>');
+            console.log(response.items[i].id.videoId);
+            $('#video').html('<iframe width="420" height="315 src=http://www.youtube.com/embed/'+ response.items[i].id.videoId +'></iframe>');
           }
         });
       }
