@@ -44,7 +44,7 @@ $(function(){
           console.log(response);
           for(var i =0; i < response.items.length; response.items[i++]){
             $('#results').append('<h3>'+ response.items[i].snippet.title + '</h3>');
-            $('#results').append('<h4>'+ response.items[i].snippet.publishedAt.substring(0,9) + '</h4>');
+            $('#results').append('<h4>'+ response.items[i].snippet.publishedAt.substring(0,10) + '</h4>');
             $('#results').append('<iframe width="420" height="315" src="http://www.youtube.com/embed/'+ response.items[i].id.videoId +'"></iframe>');
           }
         });
