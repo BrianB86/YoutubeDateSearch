@@ -29,7 +29,7 @@ $(function(){
     });
     request.execute(function(response) {
       if(response.items.length < 1){
-        console.log("That Channel does not exisit.");
+        alert("That Youtube Channel does not exist.");
       }else{
         var videoRequeset = gapi.client.youtube.search.list({
           part: "snippet",
